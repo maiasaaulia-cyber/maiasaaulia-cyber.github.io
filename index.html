@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Buku Elegan</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(90deg, #2c3e50, #3498db);
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .book-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 2rem;
+        }
+        .book {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transform: scale(1);
+            transition: all 0.3s ease;
+        }
+        .book:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .book img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .book-info {
+            padding: 1rem;
+            text-align: center;
+        }
+        .book-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        .book-author {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 0.5rem;
+        }
+        .book-price {
+            font-size: 1rem;
+            color: #3498db;
+            font-weight: bold;
+        }
+        button {
+            margin-top: 0.8rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            background: #3498db;
+            color: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <header>Toko Buku Elegan</header>
+    <div class="book-container" id="bookList"></div>
+
+    <script>
+        const books = [
+            { title: "Belajar JavaScript", author: "Andi Wijaya", price: "Rp 75.000", img: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f" },
+            { title: "Desain Web Modern", author: "Rina Sari", price: "Rp 85.000", img: "https://images.unsplash.com/photo-1512820790803-83ca734da794" },
+            { title: "Pemrograman Python", author: "Budi Santoso", price: "Rp 90.000", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f" },
+            { title: "UI/UX Design", author: "Dewi Lestari", price: "Rp 100.000", img: "https://images.unsplash.com/photo-1495446815901-a7297e633e8d" },
+            { title: "Teknologi AI", author: "Adi Nugroho", price: "Rp 120.000", img: "https://images.unsplash.com/photo-1532012197267-da84d127e765" }
+        ];
+
+        const bookList = document.getElementById("bookList");
+
+        books.forEach(book => {
+            const bookCard = document.createElement("div");
+            bookCard.className = "book";
+            bookCard.innerHTML = `
+                <img src="${book.img}" alt="${book.title}">
+                <div class="book-info">
+                    <div class="book-title">${book.title}</div>
+                    <div class="book-author">${book.author}</div>
+                    <div class="book-price">${book.price}</div>
+                    <button onclick="alert('Anda memilih ${book.title}')">Beli</button>
+                </div>
+            `;
+            bookList.appendChild(bookCard);
+        });
+    </script>
+</body>
+</html>
