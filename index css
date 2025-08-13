@@ -1,0 +1,227 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Sparkles, LayoutGrid, Palette, Rocket, Mail, Phone, MapPin, BookOpen } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+export default function LandingPage() {
+  const [email, setEmail] = useState("");
+
+  const features = [
+    {
+      icon: <LayoutGrid className="w-6 h-6" />, 
+      title: "Koleksi Lengkap",
+      desc: "Dari novel, buku pelajaran, hingga karya langka, semua ada di sini.",
+    },
+    {
+      icon: <Palette className="w-6 h-6" />, 
+      title: "Desain Aesthetic",
+      desc: "Nuansa biru luar angkasa dengan sentuhan visual yang memukau.",
+    },
+    {
+      icon: <Rocket className="w-6 h-6" />, 
+      title: "Promosi Menarik",
+      desc: "Diskon, event peluncuran buku, dan program loyalitas pelanggan.",
+    },
+  ];
+
+  const items = [
+    { title: "Novel Aesthetic", img: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1400&auto=format&fit=crop", tag: "Fiksi" },
+    { title: "Ensiklopedia Luar Angkasa", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1400&auto=format&fit=crop", tag: "Sains" },
+    { title: "Buku Self-Improvement", img: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1400&auto=format&fit=crop", tag: "Motivasi" },
+    { title: "Komik & Manga", img: "https://images.unsplash.com/photo-1612178991461-4b6a2f037b6f?q=80&w=1400&auto=format&fit=crop", tag: "Hiburan" },
+    { title: "Biografi Tokoh", img: "https://images.unsplash.com/photo-1528209392022-6c4d8a0bd98a?q=80&w=1400&auto=format&fit=crop", tag: "Biografi" },
+    { title: "Buku Seni & Desain", img: "https://images.unsplash.com/photo-1496317899792-9d7dbcd928a1?q=80&w=1400&auto=format&fit=crop", tag: "Seni" },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-blue-900 via-indigo-900 to-black text-white">
+      {/* Navbar */}
+      <nav className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-blue-900/60 bg-blue-900/70 border-b border-indigo-500/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2 font-semibold tracking-tight">
+            <BookOpen className="w-5 h-5" />
+            <span>GalaxyBooks</span>
+          </div>
+          <div className="hidden md:flex items-center gap-6 text-sm">
+            <a href="#fitur" className="hover:opacity-70">Fitur</a>
+            <a href="#koleksi" className="hover:opacity-70">Koleksi</a>
+            <a href="#testimoni" className="hover:opacity-70">Testimoni</a>
+            <a href="#kontak" className="hover:opacity-70">Kontak</a>
+            <Button className="rounded-2xl bg-indigo-500 hover:bg-indigo-600">Beli Sekarang</Button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero */}
+      <header className="relative overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-800 via-blue-900 to-black" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+              Jelajahi Dunia Buku di GalaxyBooks
+            </h1>
+            <p className="mt-4 text-indigo-200 text-lg md:text-xl">
+              Toko buku aesthetic dengan nuansa luar angkasa untuk para pecinta literasi.
+            </p>
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              <Button className="rounded-2xl h-11 px-6 bg-indigo-500 hover:bg-indigo-600">Lihat Koleksi</Button>
+              <Button variant="outline" className="rounded-2xl h-11 px-6 border-indigo-300 text-indigo-300 hover:bg-indigo-800">Tentang Kami</Button>
+            </div>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }}>
+            <img 
+              src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1600&auto=format&fit=crop" 
+              alt="Hero mock" 
+              className="relative rounded-3xl shadow-2xl border border-indigo-400/60" 
+            />
+          </motion.div>
+        </div>
+      </header>
+
+      {/* Features */}
+      <section id="fitur" className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-4xl font-bold">Kenapa Pilih GalaxyBooks?</h2>
+            <p className="mt-2 text-indigo-200">Fitur terbaik untuk pengalaman membaca yang luar biasa.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {features.map((f, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.05 }}>
+                <Card className="rounded-2xl shadow-sm bg-blue-950 border border-indigo-500/40">
+                  <CardHeader className="flex flex-row items-center gap-3">
+                    <div className="p-2 rounded-xl bg-indigo-800 border border-indigo-500/40">{f.icon}</div>
+                    <CardTitle className="text-lg text-white">{f.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-indigo-200 text-sm">{f.desc}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Collection / Grid */}
+      <section id="koleksi" className="py-16 md:py-24 bg-blue-950/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-end justify-between mb-6">
+            <div>
+              <h2 className="text-2xl md:text-4xl font-bold">Koleksi Unggulan</h2>
+              <p className="text-indigo-200 mt-2">Temukan buku terbaik pilihan kami.</p>
+            </div>
+            <Button variant="outline" className="rounded-2xl h-10 px-4 border-indigo-300 text-indigo-300 hover:bg-indigo-800">Filter</Button>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {items.map((item, idx) => (
+              <motion.article key={idx} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.35 }} className="group">
+                <div className="relative overflow-hidden rounded-2xl border border-indigo-400/40 shadow-sm">
+                  <img src={item.img} alt={item.title} className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute top-3 left-3 text-xs px-2 py-1 rounded-full bg-indigo-900/80 border border-indigo-400/40 backdrop-blur">
+                    {item.tag}
+                  </div>
+                </div>
+                <div className="px-1 mt-3 flex items-center justify-between">
+                  <h3 className="font-medium text-white">{item.title}</h3>
+                  <Button variant="ghost" className="rounded-xl h-9 px-3 gap-1 text-indigo-300">
+                    Lihat <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA / Newsletter */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative rounded-3xl p-8 md:p-12 border border-indigo-400/40 bg-blue-950/70 shadow-xl">
+            <h3 className="text-2xl md:text-3xl font-bold">Dapatkan info promo & rilis buku terbaru</h3>
+            <p className="mt-2 text-indigo-200">Masukkan email kamu untuk berlangganan newsletter GalaxyBooks.</p>
+            <form className="mt-6 flex gap-3" onSubmit={(e)=>{e.preventDefault(); alert(`Terima kasih! Kami akan kirim ke ${email}`);}}>
+              <input 
+                type="email" 
+                required 
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
+                placeholder="emailkamu@example.com" 
+                className="flex-1 h-11 rounded-2xl border border-indigo-400/40 px-4 outline-none focus:ring-2 focus:ring-indigo-400 bg-blue-900/70 text-white placeholder-indigo-300"
+              />
+              <Button type="submit" className="rounded-2xl h-11 px-6 bg-indigo-500 hover:bg-indigo-600">Langganan</Button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section id="testimoni" className="py-16 md:py-24 bg-blue-950/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-4xl font-bold">Apa kata pembaca kami?</h2>
+            <p className="mt-2 text-indigo-200">Pengalaman mereka bersama GalaxyBooks.</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {["Koleksinya lengkap banget!", "Tempatnya nyaman dan staff ramah.", "Desain tokonya unik dan instagramable!"].map((t,i)=> (
+              <Card key={i} className="rounded-2xl shadow-sm bg-blue-900/70 border border-indigo-400/40">
+                <CardContent className="p-6">
+                  <p className="text-indigo-100">“{t}”</p>
+                  <div className="mt-4 text-sm text-indigo-300">— Pelanggan #{i+1}</div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="kontak" className="py-16 md:py-24">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-start">
+          <div>
+            <h2 className="text-2xl md:text-4xl font-bold">Hubungi GalaxyBooks</h2>
+            <p className="mt-2 text-indigo-200">Ingin bertanya atau memesan? Silakan hubungi kami.</p>
+            <ul className="mt-6 space-y-3 text-indigo-100">
+              <li className="flex items-center gap-2"><Mail className="w-4 h-4" /> contact@galaxybooks.com</li>
+              <li className="flex items-center gap-2"><Phone className="w-4 h-4" /> +62 812-3456-7890</li>
+              <li className="flex items-center gap-2"><MapPin className="w-4 h-4" /> Jakarta, Indonesia</li>
+            </ul>
+          </div>
+          <form className="rounded-3xl border border-indigo-400/40 bg-blue-950/70 p-6 shadow-sm space-y-4" onSubmit={(e)=>{e.preventDefault(); alert("Pesan terkirim! Kami akan balas secepatnya.");}}>
+            <div>
+              <label className="text-sm text-indigo-300">Nama</label>
+              <input className="mt-1 w-full h-11 rounded-2xl border border-indigo-400/40 px-4 outline-none focus:ring-2 focus:ring-indigo-400 bg-blue-900/70 text-white" required />
+            </div>
+            <div>
+              <label className="text-sm text-indigo-300">Email</label>
+              <input type="email" className="mt-1 w-full h-11 rounded-2xl border border-indigo-400/40 px-4 outline-none focus:ring-2 focus:ring-indigo-400 bg-blue-900/70 text-white" required />
+            </div>
+            <div>
+              <label className="text-sm text-indigo-300">Pesan</label>
+              <textarea rows={4} className="mt-1 w-full rounded-2xl border border-indigo-400/40 p-4 outline-none focus:ring-2 focus:ring-indigo-400 bg-blue-900/70 text-white" placeholder="Tulis pesan kamu..." />
+            </div>
+            <Button type="submit" className="rounded-2xl h-11 w-full bg-indigo-500 hover:bg-indigo-600">Kirim</Button>
+          </form>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-indigo-500/40 py-10 bg-blue-950/70">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-indigo-300">© {new Date().getFullYear()} GalaxyBooks. All rights reserved.</p>
+          <div className="flex items-center gap-3 text-sm text-indigo-300">
+            <a href="#" className="hover:opacity-70">Privasi</a>
+            <span>•</span>
+            <a href="#" className="hover:opacity-70">Ketentuan</a>
+            <span>•</span>
+            <a href="#" className="hover:opacity-70">Sitemap</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
