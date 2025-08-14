@@ -1,208 +1,161 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Galaxy BookStore — Elegant & Aesthetic Bookshop</title>
-  <link rel="stylesheet" href="styles.css">
-  <meta name="description" content="Galaxy BookStore — toko buku elegan dengan tema galaxy, aesthetic, dan pengalaman belanja modern.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galaxy BookStore — Elegan & Aesthetic</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
+  <canvas id="stars"></canvas>
+  <header class="nav">
     <div class="brand">
-      <div class="logo-astro" aria-hidden="true">
-        <!-- small SVG spaceship logo -->
-        <svg viewBox="0 0 64 64" width="48" height="48" xmlns="http://www.w3.org/2000/svg" role="img">
-          <g transform="translate(0,0)">
-            <ellipse cx="32" cy="46" rx="20" ry="6" fill="rgba(135,206,250,0.14)"/>
-            <path d="M32 8 L22 34 L42 34 Z" fill="#86d0ff"/>
-            <circle cx="32" cy="22" r="5" fill="#fff"/>
-          </g>
-        </svg>
-      </div>
-      <div class="brand-text">
-        <h1>Galaxy BookStore</h1>
-        <p class="tag">Elegant • Aesthetic • Space-inspired</p>
-      </div>
+      <img src="./assets/planet.svg" class="logo" alt="Galaxy logo">
+      <span>Galaxy BookStore</span>
     </div>
-
-    <nav class="nav">
-      <button id="openCart" class="cart-btn" aria-label="Open cart">🛒 <span id="cartCount">0</span></button>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#produk">Produk</a>
+      <a href="#about">Tentang</a>
+      <a href="#lokasi">Lokasi</a>
+      <button id="openCart" class="btn ghost">🛒 <span id="cartCount">0</span></button>
     </nav>
   </header>
 
-  <main>
-    <!-- hero -->
-    <section class="hero">
-      <div class="hero-inner">
-        <h2>Discover books beyond the stars</h2>
-        <p>Curated books, elegant packaging, and a calm shopping experience. Welcome to Galaxy BookStore.</p>
-        <a class="cta" href="#catalog">Shop Now</a>
-      </div>
-      <div class="hero-decor">
-        <!-- animated stars and planets -->
-        <div class="planet planet-1"></div>
-        <div class="planet planet-2"></div>
-      </div>
-    </section>
-
-    <!-- slider -->
-    <section class="slider" aria-label="Featured books">
-      <div class="slider-track" id="sliderTrack">
-        <figure class="slide">
-          <svg class="cover" viewBox="0 0 200 300" role="img" aria-label="Cosmos Guide">
-            <rect width="200" height="300" rx="12" fill="#e6f7ff"/>
-            <text x="100" y="160" font-size="18" text-anchor="middle" fill="#003b5c" font-family="sans-serif">Cosmos Guide</text>
-          </svg>
-          <figcaption>
-            <h3>Cosmos Guide</h3>
-            <p>Explore the skies with this visual journey.</p>
-            <button class="btn add-to-cart" data-id="sku-cosmos" data-title="Cosmos Guide" data-price="29.99">Add to cart — $29.99</button>
-          </figcaption>
-        </figure>
-
-        <figure class="slide">
-          <svg class="cover" viewBox="0 0 200 300" role="img" aria-label="Stellar Tales">
-            <rect width="200" height="300" rx="12" fill="#f0fbff"/>
-            <text x="100" y="160" font-size="18" text-anchor="middle" fill="#014f86" font-family="sans-serif">Stellar Tales</text>
-          </svg>
-          <figcaption>
-            <h3>Stellar Tales</h3>
-            <p>Short stories with celestial themes.</p>
-            <button class="btn add-to-cart" data-id="sku-stellar" data-title="Stellar Tales" data-price="19.50">Add to cart — $19.50</button>
-          </figcaption>
-        </figure>
-
-        <figure class="slide">
-          <svg class="cover" viewBox="0 0 200 300" role="img" aria-label="Moonlight Memoirs">
-            <rect width="200" height="300" rx="12" fill="#f6fdff"/>
-            <text x="100" y="160" font-size="18" text-anchor="middle" fill="#026fa1" font-family="sans-serif">Moonlight Memoirs</text>
-          </svg>
-          <figcaption>
-            <h3>Moonlight Memoirs</h3>
-            <p>A poetic collection to read under soft lights.</p>
-            <button class="btn add-to-cart" data-id="sku-moon" data-title="Moonlight Memoirs" data-price="24.00">Add to cart — $24.00</button>
-          </figcaption>
-        </figure>
-      </div>
-
-      <div class="slider-controls">
-        <button id="prevSlide" aria-label="Previous">‹</button>
-        <button id="nextSlide" aria-label="Next">›</button>
-      </div>
-    </section>
-
-    <!-- catalog -->
-    <section id="catalog" class="catalog">
-      <header class="section-header">
-        <h2>Featured Collection</h2>
-        <p>Handpicked favorites with an aesthetic touch.</p>
-      </header>
-
-      <div class="cards">
-        <!-- repeat product card -->
-        <article class="card">
-          <svg class="cover small" viewBox="0 0 120 180" role="img">
-            <rect width="120" height="180" rx="8" fill="#eaf8ff"/>
-            <text x="60" y="95" font-size="12" text-anchor="middle" fill="#003b5c" font-family="sans-serif">Aurora</text>
-          </svg>
-          <div class="card-body">
-            <h3>Aurora</h3>
-            <p class="muted">A travelogue through northern lights.</p>
-            <div class="card-footer">
-              <span class="price">$16.00</span>
-              <button class="btn small add-to-cart" data-id="sku-aurora" data-title="Aurora" data-price="16.00">Add</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <svg class="cover small" viewBox="0 0 120 180" role="img">
-            <rect width="120" height="180" rx="8" fill="#f2faff"/>
-            <text x="60" y="95" font-size="12" text-anchor="middle" fill="#014f86" font-family="sans-serif">Orbit</text>
-          </svg>
-          <div class="card-body">
-            <h3>Orbit</h3>
-            <p class="muted">Non-fiction on orbital mechanics.</p>
-            <div class="card-footer">
-              <span class="price">$22.00</span>
-              <button class="btn small add-to-cart" data-id="sku-orbit" data-title="Orbit" data-price="22.00">Add</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <svg class="cover small" viewBox="0 0 120 180" role="img">
-            <rect width="120" height="180" rx="8" fill="#f8ffff"/>
-            <text x="60" y="95" font-size="12" text-anchor="middle" fill="#026fa1" font-family="sans-serif">Nebula</text>
-          </svg>
-          <div class="card-body">
-            <h3>Nebula</h3>
-            <p class="muted">Illustrated guide to deep space.</p>
-            <div class="card-footer">
-              <span class="price">$27.00</span>
-              <button class="btn small add-to-cart" data-id="sku-nebula" data-title="Nebula" data-price="27.00">Add</button>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- checkout modal -->
-    <div id="checkoutModal" class="modal" aria-hidden="true">
-      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
-        <button class="modal-close" id="closeCheckout">✕</button>
-        <h3 id="checkoutTitle">Checkout</h3>
-        <form id="checkoutForm" class="checkout-form">
-          <label>
-            Full name
-            <input type="text" name="name" required placeholder="Jane Doe">
-          </label>
-
-          <label>
-            Email
-            <input type="email" name="email" required placeholder="jane@example.com">
-          </label>
-
-          <label>
-            Address
-            <input type="text" name="address" required placeholder="Street, City, Country">
-          </label>
-
-          <div class="checkout-summary" id="checkoutSummary">
-            <!-- filled dynamically -->
-          </div>
-
-          <button type="submit" class="btn primary">Pay & Confirm</button>
-        </form>
+  <main id="home" class="hero">
+    <div class="stickers">
+      <img src="./assets/star.svg" class="sticker star s1" alt="sticker star">
+      <img src="./assets/rocket.svg" class="sticker rocket s2" alt="sticker rocket">
+      <img src="./assets/planet.svg" class="sticker planet s3" alt="sticker planet">
+    </div>
+    <div class="hero-inner">
+      <h1>Selamat Datang di <span>Galaxy</span> BookStore</h1>
+      <p>Toko buku elegan bernuansa galaxy — koleksi kurasi, suasana cozy, dan pengalaman belanja yang memikat.</p>
+      <div class="cta">
+        <a href="#produk" class="btn primary">Jelajahi Buku</a>
+        <a href="#about" class="btn ghost">Tentang Kami</a>
       </div>
     </div>
 
-    <!-- cart sidebar -->
-    <aside id="cartSidebar" class="cart-sidebar" aria-hidden="true">
-      <div class="cart-head">
-        <h3>Your Cart</h3>
-        <button id="closeCart" aria-label="Close cart">✕</button>
+    <section class="slider" aria-label="Promo & Sorotan">
+      <button class="slide-btn prev" aria-label="Sebelumnya">‹</button>
+      <div class="slides">
+        <div class="slide"><img src="./assets/slide1.svg" alt="Galaxy BookStore"></div>
+        <div class="slide"><img src="./assets/slide2.svg" alt="Buku Terbaru"></div>
+        <div class="slide"><img src="./assets/slide3.svg" alt="Diskon Minggu Ini"></div>
       </div>
-      <div id="cartItems" class="cart-items">
-        <p class="muted">Your cart is empty. Add some books!</p>
-      </div>
-      <div class="cart-footer">
-        <div class="total">
-          <span>Total</span><strong id="cartTotal">$0.00</strong>
-        </div>
-        <div class="cart-actions">
-          <button id="clearCart" class="btn ghost">Clear</button>
-          <button id="checkoutBtn" class="btn primary">Checkout</button>
-        </div>
-      </div>
-    </aside>
-
+      <button class="slide-btn next" aria-label="Berikutnya">›</button>
+      <div class="dots" role="tablist" aria-label="Slide Chooser"></div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <p>© <span id="year"></span> Galaxy BookStore — crafted with ✨</p>
+  <section id="produk" class="section">
+    <h2>Koleksi Pilihan</h2>
+    <div class="grid" id="productGrid">
+      <!-- Products injected by JS -->
+    </div>
+  </section>
+
+  <section id="about" class="section about">
+    <div class="about-card">
+      <h2>Tentang Galaxy BookStore</h2>
+      <p>Kami menghadirkan kurasi buku sastra, sains, filsafat, dan self‑improvement yang dibalut nuansa galaksi—penuh warna,
+      elegan, dan estetik. Didirikan oleh Aulia, Galaxy BookStore menggabungkan cinta membaca dengan pengalaman visual yang memukau.</p>
+      <ul class="highlights">
+        <li>Kurasi ketat, judul-judul berkualitas</li>
+        <li>Ruang baca cozy & instagrammable</li>
+        <li>Event peluncuran buku dan komunitas</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="lokasi" class="section location">
+    <h2>Lokasi & Kontak</h2>
+    <div class="map-wrap">
+      <iframe
+        title="Lokasi Galaxy BookStore"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Jakarta%20Bookstore&output=embed">
+      </iframe>
+    </div>
+
+    <form id="contactForm" class="contact-card">
+      <h3>Tinggalkan Pesan</h3>
+      <div class="row">
+        <label>Nama
+          <input type="text" name="name" required placeholder="Nama Anda">
+        </label>
+        <label>Email
+          <input type="email" name="email" required placeholder="email@contoh.com">
+        </label>
+      </div>
+      <label>Pesan
+        <textarea name="message" rows="4" placeholder="Halo Galaxy BookStore..."></textarea>
+      </label>
+      <button class="btn primary" type="submit">Kirim</button>
+      <p id="contactStatus" class="status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <div>© <span id="year"></span> Galaxy BookStore — All rights reserved.</div>
+    <div class="social">
+      <a href="#" aria-label="Instagram">🌌</a>
+      <a href="#" aria-label="TikTok">✨</a>
+      <a href="#" aria-label="X">🪐</a>
+    </div>
   </footer>
+
+  <!-- Cart Drawer -->
+  <aside id="cartDrawer" class="cart">
+    <div class="cart-header">
+      <h3>Keranjang</h3>
+      <button class="btn icon" id="closeCart" aria-label="Tutup">✕</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="total">
+        Total: <span id="cartTotal">Rp0</span>
+      </div>
+      <button class="btn primary" id="checkoutBtn">Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Checkout Modal -->
+  <dialog id="checkoutModal" class="checkout">
+    <form method="dialog" class="checkout-card" id="checkoutForm">
+      <h3>Checkout</h3>
+      <label>Nama Lengkap
+        <input type="text" name="fullname" required placeholder="Nama lengkap">
+      </label>
+      <label>Alamat Pengiriman
+        <textarea name="address" rows="3" required placeholder="Alamat lengkap"></textarea>
+      </label>
+      <div class="row">
+        <label>Metode Pembayaran
+          <select name="payment" required>
+            <option value="transfer">Transfer Bank</option>
+            <option value="ewallet">E-Wallet</option>
+            <option value="cod">COD</option>
+          </select>
+        </label>
+        <label>No. HP
+          <input type="tel" name="phone" required placeholder="08xxxxxxxxxx">
+        </label>
+      </div>
+      <div class="checkout-summary" id="checkoutSummary"></div>
+      <menu>
+        <button class="btn ghost" value="cancel">Batal</button>
+        <button class="btn primary" value="default">Konfirmasi Pesanan</button>
+      </menu>
+      <p class="status" id="checkoutStatus" aria-live="polite"></p>
+    </form>
+  </dialog>
 
   <script src="script.js"></script>
 </body>
