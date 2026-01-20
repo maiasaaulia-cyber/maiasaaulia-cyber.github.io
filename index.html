@@ -1,162 +1,259 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Galaxy BookStore — Elegan & Aesthetic</title>
-  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyraArt | Furniture Estetik</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#fdf6f0;
+  color:#333;
+}
+
+header{
+  position:sticky;
+  top:0;
+  background:#fff6ee;
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #f0e0d6;
+  z-index:99;
+}
+
+header h1{margin:0}
+
+nav a{
+  margin-left:20px;
+  text-decoration:none;
+  color:#444;
+  font-weight:bold;
+}
+
+.hero{
+  text-align:center;
+  padding:80px 20px;
+  background:linear-gradient(135deg,#ffe8dc,#fff1e6);
+}
+
+.hero img{
+  width:80px;
+  margin-bottom:15px;
+}
+
+.hero h2{font-size:36px;margin:10px 0}
+.hero p{color:#666}
+
+.search-box{
+  margin-top:30px;
+}
+
+.search-box input{
+  padding:12px 18px;
+  border-radius:30px;
+  border:1px solid #ddd;
+  width:260px;
+}
+
+.products{
+  padding:60px 40px;
+}
+
+.product-list{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:25px;
+  margin-top:30px;
+}
+
+.product-card{
+  width:260px;
+  background:#fff;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  overflow:hidden;
+  position:relative;
+  transition:.3s;
+}
+
+.product-card:hover{
+  transform:translateY(-8px);
+}
+
+.badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:#ff9a8b;
+  color:white;
+  padding:4px 10px;
+  font-size:12px;
+  border-radius:20px;
+}
+
+.product-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.product-card h3{
+  margin:15px 0 5px;
+}
+
+.product-card p{
+  color:#777;
+}
+
+.actions{
+  display:flex;
+  justify-content:space-between;
+  padding:15px;
+}
+
+.actions button{
+  border:none;
+  padding:8px 14px;
+  border-radius:20px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.cart-btn{
+  background:#ffe0d2;
+}
+
+.wish-btn{
+  background:#fff;
+  font-size:18px;
+}
+
+.about{
+  background:#fff1e6;
+  padding:60px 30px;
+  text-align:center;
+}
+
+footer{
+  background:#fff6ee;
+  padding:25px;
+  text-align:center;
+  font-size:14px;
+  color:#666;
+}
+
+/* NOTIFICATION */
+.toast{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  background:#333;
+  color:#fff;
+  padding:12px 20px;
+  border-radius:30px;
+  opacity:0;
+  transition:.3s;
+}
+.toast.show{opacity:1}
+</style>
 </head>
+
 <body>
-  <canvas id="stars"></canvas>
-  <header class="nav">
-    <div class="brand">
-      <img src="./assets/planet.svg" class="logo" alt="Galaxy logo">
-      <span>Galaxy BookStore</span>
-    </div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#produk">Produk</a>
-      <a href="#about">Tentang</a>
-      <a href="#lokasi">Lokasi</a>
-      <button id="openCart" class="btn ghost">🛒 <span id="cartCount">0</span></button>
-    </nav>
-  </header>
 
-  <main id="home" class="hero">
-    <div class="stickers">
-      <img src="./assets/star.svg" class="sticker star s1" alt="sticker star">
-      <img src="./assets/rocket.svg" class="sticker rocket s2" alt="sticker rocket">
-      <img src="./assets/planet.svg" class="sticker planet s3" alt="sticker planet">
-    </div>
-    <div class="hero-inner">
-      <h1>Selamat Datang di <span>Galaxy</span> BookStore</h1>
-      <p>Toko buku elegan bernuansa galaxy — koleksi kurasi, suasana cozy, dan pengalaman belanja yang memikat.</p>
-      <div class="cta">
-        <a href="#produk" class="btn primary">Jelajahi Buku</a>
-        <a href="#about" class="btn ghost">Tentang Kami</a>
+<header>
+  <h1>MyraArt</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#products">Produk</a>
+    <a href="#about">Tentang</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png">
+  <h2>Furniture Estetik Buat Rumah Kamu</h2>
+  <p>Hangat, cozy, dan bikin betah</p>
+
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Cari furniture lucu...">
+  </div>
+</section>
+
+<section class="products" id="products">
+  <h2 style="text-align:center">Produk Favorit</h2>
+
+  <div class="product-list" id="productList">
+
+    <div class="product-card">
+      <span class="badge">Best Seller</span>
+      <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25">
+      <h3>Sofa Minimalis</h3>
+      <p>Rp 2.300.000</p>
+      <div class="actions">
+        <button class="cart-btn" onclick="toast('Ditambah ke keranjang')">+ Cart</button>
+        <button class="wish-btn" onclick="toast('Masuk wishlist ❤️')">♡</button>
       </div>
     </div>
 
-    <section class="slider" aria-label="Promo & Sorotan">
-      <button class="slide-btn prev" aria-label="Sebelumnya">‹</button>
-      <div class="slides">
-        <div class="slide"><img src="./assets/slide1.svg" alt="Galaxy BookStore"></div>
-        <div class="slide"><img src="./assets/slide2.svg" alt="Buku Terbaru"></div>
-        <div class="slide"><img src="./assets/slide3.svg" alt="Diskon Minggu Ini"></div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511">
+      <h3>Meja Kayu Natural</h3>
+      <p>Rp 1.450.000</p>
+      <div class="actions">
+        <button class="cart-btn" onclick="toast('Ditambah ke keranjang')">+ Cart</button>
+        <button class="wish-btn" onclick="toast('Masuk wishlist ❤️')">♡</button>
       </div>
-      <button class="slide-btn next" aria-label="Berikutnya">›</button>
-      <div class="dots" role="tablist" aria-label="Slide Chooser"></div>
-    </section>
-  </main>
-
-  <section id="produk" class="section">
-    <h2>Koleksi Pilihan</h2>
-    <div class="grid" id="productGrid">
-      <!-- Products injected by JS -->
-    </div>
-  </section>
-
-  <section id="about" class="section about">
-    <div class="about-card">
-      <h2>Tentang Galaxy BookStore</h2>
-      <p>Kami menghadirkan kurasi buku sastra, sains, filsafat, dan self‑improvement yang dibalut nuansa galaksi—penuh warna,
-      elegan, dan estetik. Didirikan oleh Aulia, Galaxy BookStore menggabungkan cinta membaca dengan pengalaman visual yang memukau.</p>
-      <ul class="highlights">
-        <li>Kurasi ketat, judul-judul berkualitas</li>
-        <li>Ruang baca cozy & instagrammable</li>
-        <li>Event peluncuran buku dan komunitas</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="lokasi" class="section location">
-    <h2>Lokasi & Kontak</h2>
-    <div class="map-wrap">
-      <iframe
-        title="Lokasi Galaxy BookStore"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps?q=Jakarta%20Bookstore&output=embed">
-      </iframe>
     </div>
 
-    <form id="contactForm" class="contact-card">
-      <h3>Tinggalkan Pesan</h3>
-      <div class="row">
-        <label>Nama
-          <input type="text" name="name" required placeholder="Nama Anda">
-        </label>
-        <label>Email
-          <input type="email" name="email" required placeholder="email@contoh.com">
-        </label>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92">
+      <h3>Rak Serbaguna</h3>
+      <p>Rp 950.000</p>
+      <div class="actions">
+        <button class="cart-btn" onclick="toast('Ditambah ke keranjang')">+ Cart</button>
+        <button class="wish-btn" onclick="toast('Masuk wishlist ❤️')">♡</button>
       </div>
-      <label>Pesan
-        <textarea name="message" rows="4" placeholder="Halo Galaxy BookStore..."></textarea>
-      </label>
-      <button class="btn primary" type="submit">Kirim</button>
-      <p id="contactStatus" class="status" role="status" aria-live="polite"></p>
-    </form>
-  </section>
-
-  <footer class="footer">
-    <div>© <span id="year"></span> Galaxy BookStore — All rights reserved.</div>
-    <div class="social">
-      <a href="#" aria-label="Instagram">🌌</a>
-      <a href="#" aria-label="TikTok">✨</a>
-      <a href="#" aria-label="X">🪐</a>
     </div>
-  </footer>
 
-  <!-- Cart Drawer -->
-  <aside id="cartDrawer" class="cart">
-    <div class="cart-header">
-      <h3>Keranjang</h3>
-      <button class="btn icon" id="closeCart" aria-label="Tutup">✕</button>
-    </div>
-    <div id="cartItems" class="cart-items"></div>
-    <div class="cart-footer">
-      <div class="total">
-        Total: <span id="cartTotal">Rp0</span>
-      </div>
-      <button class="btn primary" id="checkoutBtn">Checkout</button>
-    </div>
-  </aside>
+  </div>
+</section>
 
-  <!-- Checkout Modal -->
-  <dialog id="checkoutModal" class="checkout">
-    <form method="dialog" class="checkout-card" id="checkoutForm">
-      <h3>Checkout</h3>
-      <label>Nama Lengkap
-        <input type="text" name="fullname" required placeholder="Nama lengkap">
-      </label>
-      <label>Alamat Pengiriman
-        <textarea name="address" rows="3" required placeholder="Alamat lengkap"></textarea>
-      </label>
-      <div class="row">
-        <label>Metode Pembayaran
-          <select name="payment" required>
-            <option value="transfer">Transfer Bank</option>
-            <option value="ewallet">E-Wallet</option>
-            <option value="cod">COD</option>
-          </select>
-        </label>
-        <label>No. HP
-          <input type="tel" name="phone" required placeholder="08xxxxxxxxxx">
-        </label>
-      </div>
-      <div class="checkout-summary" id="checkoutSummary"></div>
-      <menu>
-        <button class="btn ghost" value="cancel">Batal</button>
-        <button class="btn primary" value="default">Konfirmasi Pesanan</button>
-      </menu>
-      <p class="status" id="checkoutStatus" aria-live="polite"></p>
-    </form>
-  </dialog>
+<section class="about" id="about">
+  <h2>Tentang MyraArt</h2>
+  <p>
+    MyraArt hadir buat rumah yang rapi, estetik, dan hangat.
+    Furniture yang bikin betah tanpa drama.
+  </p>
+</section>
 
-  <script src="script.js"></script>
+<footer>
+  © 2026 MyraArt
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function toast(text){
+  const t=document.getElementById("toast");
+  t.innerText=text;
+  t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),2000);
+}
+
+// SEARCH
+document.getElementById("search").addEventListener("keyup", function(){
+  let value=this.value.toLowerCase();
+  document.querySelectorAll(".product-card").forEach(card=>{
+    card.style.display = card.innerText.toLowerCase().includes(value) ? "block":"none";
+  });
+});
+</script>
+
 </body>
 </html>
+
