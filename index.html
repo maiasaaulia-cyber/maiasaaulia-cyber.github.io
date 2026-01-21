@@ -149,7 +149,13 @@
         height: 150px;
       }
     }
-  </style>
+    .slider{position:absolute;inset:0;z-index:-1;border-radius:32px;overflow:hidden}
+  .slides{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;background-size:cover;background-position:center}
+  .slides.active{opacity:1}
+  .hero{position:relative}
+  .floating-wa{position:fixed;bottom:24px;right:24px;background:#25d366;color:#fff;padding:14px 18px;border-radius:999px;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+
 </head>
 <body>
 
@@ -169,6 +175,11 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="slider">
+      <div class="slides active" style="background-image:url('https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=1200');"></div>
+      <div class="slides" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200');"></div>
+      <div class="slides" style="background-image:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200');"></div>
+    </div>
     <div>
       <h1>Furniture Estetik untuk Rumah Nyaman</h1>
       <p>Koleksi furniture pilihan dengan desain minimalis, natural, dan elegan untuk menciptakan suasana rumah yang hangat dan berkelas.</p>
@@ -218,7 +229,19 @@
     <a href="https://www.google.com/maps?q=jakarta" target="_blank" class="btn">Lihat Lokasi di Google Maps</a>
   </section>
 
+  <section id="testimoni">
+    <h2>Apa Kata Mereka</h2>
+    <div class="testimonials">
+      <div class="card"><p>"Sofanya cakep banget dan nyaman."</p><strong>Rina • Bandung</strong><div class="rating">★★★★★</div></div>
+      <div class="card"><p>"Pengiriman cepat, kualitas top."</p><strong>Dimas • Jakarta</strong><div class="rating">★★★★★</div></div>
+      <div class="card"><p>"Rumah jadi keliatan mahal."</p><strong>Salsa • Depok</strong><div class="rating">★★★★☆</div></div>
+    </div>
+  </section>
 </main>
+<a href="https://wa.me/6281234567890" class="floating-wa">💬 Chat WhatsApp</a>
+<script>
+let i=0;const s=document.querySelectorAll('.slides');setInterval(()=>{s[i].classList.remove('active');i=(i+1)%s.length;s[i].classList.add('active')},4000);
+</script>
 
 <footer>
   <p>© 2026 MyraArt Furniture. All rights reserved.</p>
