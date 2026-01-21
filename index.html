@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MyraArt Furniture</title>
 
-  <!-- Preconnect Font -->
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(180deg, #fffaf5, #f3efe9);
@@ -30,29 +31,47 @@
     nav {
       max-width: 1200px;
       margin: auto;
+      padding: 16px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 20px;
+    }
+
+    nav strong {
+      font-size: 20px;
+      letter-spacing: 0.5px;
     }
 
     nav a {
       text-decoration: none;
       color: #333;
-      margin-left: 16px;
+      margin-left: 18px;
       font-weight: 500;
     }
 
+    main { overflow-x: hidden; }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    h1, h2, h3 {
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    /* HERO */
     .hero {
       min-height: 520px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      max-width: 1200px;
-      margin: auto;
-      padding: 60px 20px;
       gap: 40px;
     }
+
+    .hero p { max-width: 500px; }
 
     .hero img {
       width: 100%;
@@ -65,20 +84,14 @@
       display: inline-block;
       background: #c49a6c;
       color: #fff;
-      padding: 12px 20px;
+      padding: 12px 22px;
       border-radius: 999px;
       text-decoration: none;
       margin-top: 20px;
+      font-size: 14px;
     }
 
-    section {
-      padding: 80px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    h2 { margin-bottom: 30px; }
-
+    /* PRODUCTS */
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
@@ -90,36 +103,51 @@
       border-radius: 24px;
       padding: 16px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .card img {
       width: 100%;
       height: 180px;
-      max-height: 180px;
       object-fit: cover;
       border-radius: 16px;
     }
 
-    .rating { color: #f4b400; }
+    .rating {
+      color: #f4b400;
+      font-size: 14px;
+    }
 
+    /* FOOTER */
     footer {
       background: #2f2f2f;
       color: #eee;
       padding: 60px 20px;
       margin-top: 80px;
+      text-align: center;
     }
 
-    footer a { color: #fff; text-decoration: none; }
+    footer p { opacity: 0.9; }
 
-    @media(max-width:768px){
-      .hero { grid-template-columns: 1fr; }
-      .hero img { max-height: 240px; }
-      .card img { height: 150px; }
-      section { padding: 60px 16px; }
-    }
-      .hero img { max-height: 260px; }
-      section { padding: 60px 16px; }
-    }
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 60px 16px;
+      }
+
+      .hero img {
+        max-height: 260px;
+      }
+
+      .card img {
+        height: 150px;
+      }
     }
   </style>
 </head>
@@ -138,52 +166,50 @@
 </header>
 
 <main id="home">
+
+  <!-- HERO -->
   <section class="hero">
     <div>
       <h1>Furniture Estetik untuk Rumah Nyaman</h1>
-      <p>Koleksi furniture pilihan dengan desain minimalis, natural, dan elegan.</p>
+      <p>Koleksi furniture pilihan dengan desain minimalis, natural, dan elegan untuk menciptakan suasana rumah yang hangat dan berkelas.</p>
       <a href="#produk" class="btn">Lihat Produk</a>
     </div>
-    <img 
-      src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=900&auto=format&fit=crop" 
-      alt="Furniture MyraArt"
-      width="900"
-      height="520"
-      loading="eager"
-      fetchpriority="high"
-    >
+    <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=900&auto=format&fit=crop" alt="Furniture MyraArt" loading="eager" />
   </section>
 
+  <!-- PRODUK -->
   <section id="produk">
     <h2>Produk Unggulan</h2>
     <div class="products">
 
       <div class="card">
-        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&auto=format&fit=crop" alt="Sofa Minimalis" width="500" height="500" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&auto=format&fit=crop" alt="Sofa Minimalis" loading="lazy" />
         <h3>Sofa Minimalis</h3>
-        <p>⭐ 4.8 (124 ulasan)</p>
+        <p class="rating">⭐ 4.8 (124 ulasan)</p>
       </div>
 
       <div class="card">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&auto=format&fit=crop" alt="Meja Kayu" width="500" height="500" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&auto=format&fit=crop" alt="Meja Kayu" loading="lazy" />
         <h3>Meja Kayu Natural</h3>
-        <p>⭐ 4.7 (98 ulasan)</p>
+        <p class="rating">⭐ 4.7 (98 ulasan)</p>
       </div>
 
       <div class="card">
-        <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c7b?w=500&auto=format&fit=crop" alt="Lemari Rotan" width="500" height="500" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c7b?w=500&auto=format&fit=crop" alt="Lemari Rotan" loading="lazy" />
         <h3>Lemari Rotan</h3>
-        <p>⭐ 4.9 (156 ulasan)</p>
+        <p class="rating">⭐ 4.9 (156 ulasan)</p>
       </div>
 
     </div>
   </section>
 
+  <!-- TENTANG -->
   <section id="tentang">
     <h2>Tentang MyraArt</h2>
-    <p>MyraArt adalah brand furniture yang menghadirkan sentuhan hangat dan estetik untuk setiap rumah. Kami fokus pada kualitas, kenyamanan, dan desain yang timeless.</p>
+    <p>MyraArt adalah brand furniture yang menghadirkan sentuhan hangat dan estetik untuk setiap rumah. Kami mengutamakan kualitas material, kenyamanan, serta desain yang timeless agar setiap produk dapat dinikmati dalam jangka panjang.</p>
   </section>
 
+  <!-- KONTAK -->
   <section id="kontak">
     <h2>Kontak Kami</h2>
     <p>📍 Jakarta, Indonesia</p>
@@ -191,10 +217,11 @@
     <p>✉️ hello@myraart.id</p>
     <a href="https://www.google.com/maps?q=jakarta" target="_blank" class="btn">Lihat Lokasi di Google Maps</a>
   </section>
+
 </main>
 
 <footer>
-  <p>© 2026 MyraArt Furniture</p>
+  <p>© 2026 MyraArt Furniture. All rights reserved.</p>
 </footer>
 
 </body>
