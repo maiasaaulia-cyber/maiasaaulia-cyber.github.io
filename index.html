@@ -197,6 +197,46 @@ c.style.display=cat=='all'||c.classList.contains(cat)?'block':'none';
 let s=0;const slides=document.querySelectorAll('.slide');
 setInterval(()=>{slides[s].classList.remove('active');s=(s+1)%slides.length;slides[s].classList.add('active')},4000);
 </script>
+  <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biodata | MyraArt</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+      <img src="foto.jpg" alt="Foto Profil" class="profile-img">
+
+      <h1 class="name">MyraArt</h1>
+
+      <p class="bio">
+        MyraArt adalah toko furniture yang menghadirkan desain modern minimalis
+        dengan sentuhan elegan dan tenang. Fokus kami pada kualitas material,
+        kenyamanan, dan estetika agar setiap ruang terasa hangat, rapi,
+        dan berkelas tanpa kesan berlebihan.
+      </p>
+
+      <p class="school">
+        Saat ini saya bersekolah di
+        <a href="https://pesantrenmodernattaqwagunungputri.sch.id/"
+           target="_blank">
+          SMA Pesantren Modern At Taqwa
+        </a>,
+        Gunung Putri, Bogor.
+      </p>
+
+      <button id="btn">Lihat Lebih Lanjut</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
 
 </body>
 </html>
