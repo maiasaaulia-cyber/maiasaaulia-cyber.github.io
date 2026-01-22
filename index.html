@@ -1,160 +1,201 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyraArt Furniture</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyraArt Furniture</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Swiper -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:Poppins,sans-serif;
+background:linear-gradient(180deg,#f6f1eb,#e9e3db);
+color:#2f2f2f
+}
+a{text-decoration:none;color:inherit}
+img{width:100%;display:block}
 
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif}
-    body{
-      background:linear-gradient(180deg,#f5efe7,#fdfaf6);
-      color:#3a2f28;
-      overflow-x:hidden
-    }
-    header{
-      padding:20px 40px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:sticky;top:0;background:rgba(255,255,255,.8);backdrop-filter:blur(10px);z-index:10
-    }
-    nav a{margin-left:20px;text-decoration:none;color:#3a2f28;font-weight:500}
-    .hero{
-      padding:80px 40px;
-      display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center
-    }
-    .hero h1{font-size:3rem;line-height:1.2}
-    .hero p{margin:20px 0;opacity:.8}
-    .btn{
-      padding:12px 24px;background:#3a2f28;color:white;border:none;border-radius:25px;cursor:pointer
-    }
+/* NAV */
+header{background:#fff;position:sticky;top:0;z-index:20;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+nav{max-width:1200px;margin:auto;padding:16px;display:flex;justify-content:space-between;align-items:center}
+nav a{margin-left:16px;font-weight:500}
 
-    .swiper{width:100%;padding:40px 0}
-    .swiper-slide img{width:100%;border-radius:20px}
+/* SECTION */
+section{max-width:1200px;margin:60px auto;padding:40px 20px;border-radius:32px}
+.bg{background:rgba(255,255,255,.92);box-shadow:0 10px 30px rgba(0,0,0,.05)}
 
-    section{padding:80px 40px}
-    h2{text-align:center;margin-bottom:40px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px}
-    .card{
-      background:white;border-radius:20px;padding:20px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.08);cursor:pointer;transition:.3s
-    }
-    .card:hover{transform:translateY(-8px)}
-    .card img{width:100%;height:180px;object-fit:cover;border-radius:15px}
+/* HERO */
+.hero{position:relative;min-height:420px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;overflow:hidden}
+.slider{position:absolute;inset:0;z-index:-1}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1s;background-size:cover;background-position:center}
+.slide.active{opacity:1}
+.hero-box{background:rgba(255,255,255,.9);padding:30px;border-radius:24px}
 
-    .badge{background:#e7d8c9;padding:5px 10px;border-radius:12px;font-size:12px;display:inline-block;margin-top:10px}
+/* BUTTON */
+.btn{display:inline-block;background:#c49a6c;color:#fff;padding:10px 20px;border-radius:999px;margin-top:10px;border:none;cursor:pointer}
 
-    .about,.contact{max-width:900px;margin:auto;text-align:center}
+/* FILTER */
+.filters{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.filters button{background:#eee;padding:8px 16px;border-radius:999px;border:none;cursor:pointer}
+.filters button.active{background:#c49a6c;color:#fff}
 
-    iframe{width:100%;height:350px;border:0;border-radius:20px;margin-top:30px}
+/* PRODUCTS */
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.card{
+background:#fff;border-radius:24px;padding:16px;
+box-shadow:0 8px 24px rgba(0,0,0,.08);
+transition:.3s
+}
+.card:hover{transform:translateY(-6px)}
+.card img{height:180px;object-fit:cover;border-radius:16px}
+.rating{color:#f4b400;font-size:14px}
 
-    footer{
-      padding:40px;text-align:center;background:#3a2f28;color:white
-    }
+/* CART */
+.cart-btn{
+position:fixed;top:90px;right:20px;
+background:#c49a6c;color:#fff;
+padding:12px 18px;border-radius:999px;
+box-shadow:0 8px 20px rgba(0,0,0,.25)
+}
 
-    /* popup */
-    .popup{
-      position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:20
-    }
-    .popup-content{
-      background:white;padding:30px;border-radius:20px;max-width:400px;text-align:center
-    }
-  </style>
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:1000}
+.modal-box{
+background:#fff;padding:28px;border-radius:24px;
+max-width:420px;width:90%
+}
+.modal-box img{border-radius:16px;margin-bottom:12px}
+
+/* MAP */
+iframe{width:100%;height:320px;border:0;border-radius:24px}
+
+/* WA */
+.wa{
+position:fixed;right:20px;bottom:20px;
+background:#25d366;color:#fff;
+padding:14px 18px;border-radius:999px;
+box-shadow:0 10px 24px rgba(0,0,0,.25)
+}
+
+footer{background:#2f2f2f;color:#eee;text-align:center;padding:40px;margin-top:80px}
+
+@media(max-width:768px){.hero{grid-template-columns:1fr}}
+</style>
 </head>
+
 <body>
 
-<header>
-  <h2>MyraArt</h2>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#produk">Produk</a>
-    <a href="#tentang">Tentang Kami</a>
-    <a href="#kontak">Kontak</a>
-  </nav>
-</header>
+<a class="cart-btn" id="cartBtn">🛒 Cart (0)</a>
 
-<section class="hero" id="home">
-  <div>
-    <h1>Luxury Calm Furniture for Your Space</h1>
-    <p>MyraArt menghadirkan furniture estetik, hangat, dan elegan untuk rumah impianmu.</p>
-    <button class="btn" onclick="showPopup()">Lihat Promo</button>
-  </div>
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000"></div>
-      <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1549187774-b4e9b0445b41?auto=format&fit=crop&w=1000"></div>
-      <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000"></div>
-    </div>
-  </div>
-</section>
-
-<section id="produk">
-  <h2>Produk Favorit</h2>
-  <div class="grid">
-
-    <div class="card" onclick="alert('Detail Sofa Minimalis')">
-      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800">
-      <h3>Sofa Minimalis</h3>
-      <span class="badge">⭐ 4.8</span>
-    </div>
-
-    <div class="card" onclick="alert('Detail Meja Rotan')">
-      <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=800">
-      <h3>Meja Rotan Natural</h3>
-      <span class="badge">⭐ 4.9</span>
-    </div>
-
-    <div class="card" onclick="alert('Detail Lemari Kayu')">
-      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800">
-      <h3>Lemari Kayu Premium</h3>
-      <span class="badge">⭐ 4.7</span>
-    </div>
-
-    <div class="card" onclick="alert('Detail Kursi Santai')">
-      <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800">
-      <h3>Kursi Santai</h3>
-      <span class="badge">⭐ 4.6</span>
-    </div>
-
-  </div>
-</section>
-
-<section id="tentang">
-  <h2>Tentang MyraArt</h2>
-  <div class="about">
-    <p>MyraArt adalah brand furniture yang fokus pada desain luxury calm. Kami menggabungkan estetika modern dengan material natural untuk menciptakan ruang yang nyaman dan berkelas.</p>
-  </div>
-</section>
-
-<section id="kontak">
-  <h2>Kontak & Lokasi</h2>
-  <div class="contact">
-    <p>📞 0812-3456-7890 | ✉️ myraart@gmail.com</p>
-    <iframe src="https://www.google.com/maps?q=Jakarta&output=embed"></iframe>
-  </div>
-</section>
-
-<footer>
-  <p>© 2026 MyraArt Furniture. All rights reserved.</p>
-</footer>
-
-<div class="popup" id="popup">
-  <div class="popup-content">
-    <h3>🎉 Promo Spesial</h3>
-    <p>Diskon 20% untuk pembelian pertama!</p>
-    <button class="btn" onclick="closePopup()">Tutup</button>
-  </div>
+<!-- MODAL -->
+<div class="modal" id="modal">
+<div class="modal-box">
+<img id="mImg">
+<h3 id="mTitle"></h3>
+<p id="mDesc"></p>
+<p class="rating" id="mRate"></p>
+<button class="btn" onclick="addCart()">Tambah ke Cart</button>
+<button class="btn" onclick="closeModal()">Tutup</button>
+</div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<header>
+<nav>
+<strong>MyraArt</strong>
+<div>
+<a href="#home">Home</a>
+<a href="#produk">Produk</a>
+<a href="#kontak">Kontak</a>
+</div>
+</nav>
+</header>
+
+<main id="home">
+
+<section class="hero">
+<div class="slider">
+<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=1200')"></div>
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200')"></div>
+</div>
+<div class="hero-box">
+<h1>Luxury Calm Furniture</h1>
+<p>Estetik, nyaman, dan berkelas.</p>
+<a href="#produk" class="btn">Belanja Sekarang</a>
+</div>
+</section>
+
+<section id="produk" class="bg">
+<h2>Koleksi Furniture</h2>
+
+<div class="filters">
+<button class="active" onclick="filter('all')">Semua</button>
+<button onclick="filter('sofa')">Sofa</button>
+<button onclick="filter('meja')">Meja</button>
+<button onclick="filter('lemari')">Lemari</button>
+</div>
+
+<div class="products" id="products">
+
+<div class="card sofa" onclick="openProduct('Sofa Minimalis','https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800','Sofa empuk minimalis','⭐ 4.8')">
+<img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600">
+<h3>Sofa Minimalis</h3>
+</div>
+
+<div class="card meja" onclick="openProduct('Meja Kayu','https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800','Meja kayu natural','⭐ 4.7')">
+<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600">
+<h3>Meja Kayu</h3>
+</div>
+
+<div class="card lemari" onclick="openProduct('Kabinet Kayu','https://images.unsplash.com/photo-1598300053651-d63d4f68b92b?auto=format&fit=crop&w=800','Kabinet estetik','⭐ 4.9')">
+<img src="https://images.unsplash.com/photo-1598300053651-d63d4f68b92b?auto=format&fit=crop&w=600">
+<h3>Kabinet Kayu</h3>
+</div>
+
+</div>
+</section>
+
+<section id="kontak" class="bg">
+<h2>Kontak</h2>
+<p>📞 0812-3456-7890</p>
+<p>✉️ hello@myraart.id</p>
+<iframe loading="lazy" src="https://www.google.com/maps?q=Jakarta+Indonesia&output=embed"></iframe>
+</section>
+
+</main>
+
+<a href="https://wa.me/6281234567890" class="wa">💬 WhatsApp</a>
+
+<footer>
+<p>© 2026 MyraArt Furniture</p>
+</footer>
+
 <script>
-  new Swiper('.swiper',{loop:true,autoplay:{delay:3000}})
-  function showPopup(){document.getElementById('popup').style.display='flex'}
-  function closePopup(){document.getElementById('popup').style.display='none'}
-  setTimeout(showPopup,4000)
+let cart=0,curProd='';
+function openProduct(t,i,d,r){
+modal.style.display='flex';
+mTitle.innerText=t;
+mImg.src=i;
+mDesc.innerText=d;
+mRate.innerText=r;
+curProd=t;
+}
+function closeModal(){modal.style.display='none'}
+function addCart(){
+cart++;
+cartBtn.innerText='🛒 Cart ('+cart+')';
+alert(curProd+' ditambahkan ke cart');
+closeModal();
+}
+function filter(cat){
+document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));
+event.target.classList.add('active');
+document.querySelectorAll('.card').forEach(c=>{
+c.style.display=cat=='all'||c.classList.contains(cat)?'block':'none';
+});
+}
+let s=0;const slides=document.querySelectorAll('.slide');
+setInterval(()=>{slides[s].classList.remove('active');s=(s+1)%slides.length;slides[s].classList.add('active')},4000);
 </script>
 
 </body>
