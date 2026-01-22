@@ -1,269 +1,234 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyraArt Furniture</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyraArt Furniture</title>
 
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
 
-  <!-- Swiper -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Poppins,sans-serif}
+body{
+  background:linear-gradient(180deg,#f5efe7,#fdfaf6);
+  color:#3a2f28;
+  overflow-x:hidden
+}
+header{
+  padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  background:rgba(255,255,255,.9);
+  backdrop-filter:blur(10px);
+  z-index:10
+}
+nav a{margin-left:20px;text-decoration:none;color:#3a2f28;font-weight:500}
+section{padding:80px 40px}
+h2{text-align:center;margin-bottom:40px}
 
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif}
-    body{
-      background:linear-gradient(180deg,#f5efe7,#fdfaf6);
-      color:#3a2f28;
-      overflow-x:hidden
-    }
-    header{
-      padding:20px 40px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:sticky;
-      top:0;
-      background:rgba(255,255,255,.85);
-      backdrop-filter:blur(10px);
-      z-index:10
-    }
-    nav a{
-      margin-left:20px;
-      text-decoration:none;
-      color:#3a2f28;
-      font-weight:500
-    }
-    section{padding:80px 40px}
-    h2{text-align:center;margin-bottom:40px}
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center
+}
+.hero h1{font-size:3rem;line-height:1.2}
+.hero p{margin:20px 0;opacity:.8}
 
-    /* HERO */
-    .hero{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:40px;
-      align-items:center
-    }
-    .hero h1{font-size:3rem;line-height:1.2}
-    .hero p{margin:20px 0;opacity:.85}
-    .btn{
-      padding:12px 26px;
-      background:#3a2f28;
-      color:white;
-      border:none;
-      border-radius:30px;
-      cursor:pointer
-    }
+.btn{
+  padding:12px 26px;
+  background:#3a2f28;
+  color:white;
+  border:none;
+  border-radius:25px;
+  cursor:pointer
+}
 
-    /* SWIPER */
-    .swiper{width:100%;padding:40px 0}
-    .swiper-slide img{width:100%;border-radius:22px}
+.swiper{width:100%;max-width:500px}
+.swiper img{width:100%;border-radius:20px}
 
-    /* PRODUK */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:30px
-    }
-    .card{
-      background:white;
-      border-radius:22px;
-      padding:20px;
-      text-align:center;
-      box-shadow:0 10px 30px rgba(0,0,0,.08);
-      cursor:pointer;
-      transition:.3s
-    }
-    .card:hover{transform:translateY(-8px)}
-    .card img{
-      width:100%;
-      height:180px;
-      object-fit:cover;
-      border-radius:15px
-    }
-    .badge{
-      background:#e7d8c9;
-      padding:6px 12px;
-      border-radius:14px;
-      font-size:12px;
-      display:inline-block;
-      margin-top:10px
-    }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px
+}
+.card{
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  cursor:pointer;
+  transition:.3s
+}
+.card:hover{transform:translateY(-8px)}
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:15px
+}
+.badge{
+  background:#e7d8c9;
+  padding:6px 12px;
+  border-radius:12px;
+  font-size:12px;
+  display:inline-block;
+  margin-top:10px
+}
 
-    /* BIODATA */
-    .biodata{
-      max-width:1000px;
-      margin:auto;
-      background:rgba(255,255,255,.9);
-      border-radius:30px;
-      display:grid;
-      grid-template-columns:1fr 1.3fr;
-      overflow:hidden;
-      box-shadow:0 30px 60px rgba(0,0,0,.12)
-    }
-    .biodata img{
-      width:100%;
-      height:100%;
-      object-fit:cover
-    }
-    .bio-content{
-      padding:50px;
-      display:flex;
-      flex-direction:column;
-      gap:18px
-    }
-    .bio-badge{
-      background:#c8a97e;
-      color:white;
-      padding:6px 16px;
-      border-radius:999px;
-      font-size:12px;
-      width:max-content
-    }
-    .bio-content p{line-height:1.7}
-    .bio-content a{
-      color:#c49a6c;
-      text-decoration:none;
-      font-weight:500
-    }
+/* biodata */
+.biodata{
+  max-width:900px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:40px;
+  align-items:center
+}
+.biodata img{
+  width:100%;
+  border-radius:25px;
+  box-shadow:0 20px 40px rgba(0,0,0,.15)
+}
+.biodata p{line-height:1.7}
 
-    /* ABOUT & CONTACT */
-    .about,.contact{
-      max-width:900px;
-      margin:auto;
-      text-align:center
-    }
-    iframe{
-      width:100%;
-      height:350px;
-      border:0;
-      border-radius:20px;
-      margin-top:30px
-    }
+/* popup */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:20
+}
+.popup-content{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  max-width:400px;
+  text-align:center
+}
 
-    footer{
-      padding:40px;
-      text-align:center;
-      background:#3a2f28;
-      color:white
-    }
+iframe{
+  width:100%;
+  height:350px;
+  border:0;
+  border-radius:20px;
+  margin-top:30px
+}
+footer{
+  padding:40px;
+  text-align:center;
+  background:#3a2f28;
+  color:white
+}
 
-    /* POPUP */
-    .popup{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.5);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      z-index:20
-    }
-    .popup-content{
-      background:white;
-      padding:30px;
-      border-radius:20px;
-      max-width:400px;
-      text-align:center
-    }
-
-    @media(max-width:900px){
-      .hero,.biodata{grid-template-columns:1fr}
-    }
-  </style>
+@media(max-width:900px){
+  .hero,.biodata{grid-template-columns:1fr}
+}
+</style>
 </head>
+
 <body>
 
 <header>
-  <h2>MyraArt</h2>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#produk">Produk</a>
-    <a href="#biodata">Biodata</a>
-    <a href="#tentang">Tentang</a>
-    <a href="#kontak">Kontak</a>
-  </nav>
+<h2>MyraArt</h2>
+<nav>
+<a href="#home">Home</a>
+<a href="#produk">Produk</a>
+<a href="#biodata">Biodata</a>
+<a href="#kontak">Kontak</a>
+</nav>
 </header>
 
+<!-- HOME -->
 <section class="hero" id="home">
-  <div>
-    <h1>Luxury Calm Furniture for Your Space</h1>
-    <p>MyraArt menghadirkan furniture estetik, hangat, dan elegan untuk rumah impianmu.</p>
-    <button class="btn" onclick="showPopup()">Lihat Promo</button>
-  </div>
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000"></div>
-      <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1549187774-b4e9b0445b41?auto=format&fit=crop&w=1000"></div>
-      <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000"></div>
-    </div>
-  </div>
+<div>
+<h1>Luxury Calm Furniture</h1>
+<p>Furniture estetik bernuansa hangat dan elegan untuk ruang yang tenang dan berkelas.</p>
+<button class="btn" onclick="showPopup()">Lihat Promo</button>
+</div>
+
+<div class="swiper">
+<div class="swiper-wrapper">
+<div class="swiper-slide"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000"></div>
+<div class="swiper-slide"><img src="https://images.unsplash.com/photo-1549187774-b4e9b0445b41?auto=format&fit=crop&w=1000"></div>
+<div class="swiper-slide"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000"></div>
+</div>
+</div>
 </section>
 
+<!-- PRODUK -->
 <section id="produk">
-  <h2>Produk Favorit</h2>
-  <div class="grid">
-    <div class="card"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800"><h3>Sofa Minimalis</h3><span class="badge">⭐ 4.8</span></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=800"><h3>Meja Rotan</h3><span class="badge">⭐ 4.9</span></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800"><h3>Lemari Kayu</h3><span class="badge">⭐ 4.7</span></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800"><h3>Kursi Santai</h3><span class="badge">⭐ 4.6</span></div>
-  </div>
+<h2>Produk Favorit</h2>
+<div class="grid">
+<div class="card" onclick="alert('Detail Sofa Minimalis')">
+<img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800">
+<h3>Sofa Minimalis</h3><span class="badge">⭐ 4.8</span>
+</div>
+
+<div class="card" onclick="alert('Detail Meja Rotan')">
+<img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=800">
+<h3>Meja Rotan Natural</h3><span class="badge">⭐ 4.9</span>
+</div>
+
+<div class="card" onclick="alert('Detail Lemari Kayu')">
+<img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800">
+<h3>Lemari Kayu</h3><span class="badge">⭐ 4.7</span>
+</div>
+</div>
 </section>
 
+<!-- BIODATA -->
 <section id="biodata">
-  <h2>Biodata</h2>
-  <div class="biodata">
-    <img src="aifaceswap-12cef0db24b3c5982bee4ec489697fed (1).jpg">
-    <div class="bio-content">
-      <span class="bio-badge">Owner MyraArt</span>
-      <h3>MyraArt Furniture</h3>
-      <p>
-        MyraArt adalah toko furniture modern minimalis yang menghadirkan produk estetik, nyaman, dan fungsional. Setiap desain dibuat untuk menciptakan suasana rumah yang hangat, elegan, dan tenang.
-      </p>
-      <p>
-        Aku bersekolah di
-        <a href="https://pesantrenmodernattaqwagunungputri.sch.id/" target="_blank">
-          SMA Pesantren Modern At Taqwa
-        </a>,
-        Gunung Putri, Bogor.
-      </p>
-    </div>
-  </div>
+<h2>Biodata</h2>
+<div class="biodata">
+<img src="biodata.jpg" alt="Foto Biodata">
+<p>
+Aku adalah bagian dari MyraArt, brand furniture dengan gaya luxury calm yang
+mengutamakan desain modern, material natural, dan kenyamanan ruang.
+Saat ini aku bersekolah di
+<a href="https://pesantrenmodernattaqwagunungputri.sch.id/" target="_blank">
+SMA Pesantren Modern At Taqwa
+</a>,
+Gunung Putri, Bogor.
+</p>
+</div>
 </section>
 
-<section id="tentang">
-  <h2>Tentang MyraArt</h2>
-  <div class="about">
-    <p>MyraArt fokus pada furniture luxury calm dengan material natural dan desain timeless.</p>
-  </div>
-</section>
-
+<!-- KONTAK -->
 <section id="kontak">
-  <h2>Kontak & Lokasi</h2>
-  <div class="contact">
-    <p>📞 0812-3456-7890 | ✉️ myraart@gmail.com</p>
-    <iframe src="https://www.google.com/maps?q=Jakarta&output=embed"></iframe>
-  </div>
+<h2>Kontak & Lokasi</h2>
+<p style="text-align:center">📞 0812-3456-7890 | ✉️ myraart@gmail.com</p>
+<iframe src="https://www.google.com/maps?q=Jakarta&output=embed"></iframe>
 </section>
 
 <footer>
-  <p>© 2026 MyraArt Furniture. All rights reserved.</p>
+© 2026 MyraArt Furniture
 </footer>
 
+<!-- POPUP -->
 <div class="popup" id="popup">
-  <div class="popup-content">
-    <h3>🎉 Promo Spesial</h3>
-    <p>Diskon 20% untuk pembelian pertama!</p>
-    <button class="btn" onclick="closePopup()">Tutup</button>
-  </div>
+<div class="popup-content">
+<h3>Promo Spesial</h3>
+<p>Diskon 20% pembelian pertama</p>
+<button class="btn" onclick="closePopup()">Tutup</button>
+</div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js" defer></script>
 <script>
-  new Swiper('.swiper',{loop:true,autoplay:{delay:3000}})
-  function showPopup(){document.getElementById('popup').style.display='flex'}
-  function closePopup(){document.getElementById('popup').style.display='none'}
+window.addEventListener('load',()=>{
+  new Swiper('.swiper',{loop:true,autoplay:{delay:3500}})
   setTimeout(showPopup,4000)
+})
+function showPopup(){popup.style.display='flex'}
+function closePopup(){popup.style.display='none'}
 </script>
 
 </body>
